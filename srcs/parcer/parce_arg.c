@@ -10,19 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parcer.h                                 cclarice@student.21-school.ru   */
+/*   parce_arg.c                              cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 20:42:05  /  2021/07/28 20:53:09 @cclarice   */
+/*   Created/Updated: 2021/07/28 21:25:46  /  2021/07/28 21:25:51 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARCER_H
-# define PARCER_H
+#include "parcer.h"
 
-# include "../cyber3d.h"
+int	args_not_parced(t_cub *cub)
+{
 
-typedef struct s_cub t_cub;
+}
 
-int	parcer(t_cub *cub);
+/*
+	NO ./path_to_the_north_texture
+	SO ./path_to_the_south_texture
+	WE ./path_to_the_west_texture
+	EA ./path_to_the_east_texture
+	F 220,100,0
+	C 225,30,0
+*/
 
-#endif
+int	parce_arg(t_cub *cub)
+{
+	char	*ptr;
+
+	ptr = cub->cub;
+	while (args_not_parced(t_cub *cub))
+	{
+		if (ptr[0] && ptr[0] == 'N' && ptr[0] == 'O')
+	}
+	return (OK);
+}

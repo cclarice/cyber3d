@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parcer.h                                 cclarice@student.21-school.ru   */
+/*   utils.h                                  cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 20:42:05  /  2021/07/28 20:53:09 @cclarice   */
+/*   Created/Updated: 2021/07/28 20:38:55  /  2021/07/28 20:42:42 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARCER_H
-# define PARCER_H
+#ifndef UTILS_H
+# define UTILS_H
 
 # include "../cyber3d.h"
 
-typedef struct s_cub t_cub;
-
-int	parcer(t_cub *cub);
+int		error(void);
+int		ft_strlen(const char *str);
+char	*readtostr(const char *filepath);
 
 #endif

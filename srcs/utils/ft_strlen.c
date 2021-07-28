@@ -10,19 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parcer.h                                 cclarice@student.21-school.ru   */
+/*   ft_strlen.c                              cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 20:42:05  /  2021/07/28 20:53:09 @cclarice   */
+/*   Created/Updated: 2021/07/28 19:58:36  /  2021/07/28 19:58:39 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARCER_H
-# define PARCER_H
+#include "utils.h"
 
-# include "../cyber3d.h"
+int	ft_strlen(const char *str)
+{
+	int	ret;
 
-typedef struct s_cub t_cub;
-
-int	parcer(t_cub *cub);
-
-#endif
+	ret = 0;
+	while (str[ret])
+		ret++;
+	return (ret);
+}

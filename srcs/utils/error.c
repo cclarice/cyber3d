@@ -10,19 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parcer.h                                 cclarice@student.21-school.ru   */
+/*   error.c                                  cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 20:42:05  /  2021/07/28 20:53:09 @cclarice   */
+/*   Created/Updated: 2021/07/28 17:53:25  /  2021/07/28 17:54:12 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARCER_H
-# define PARCER_H
+#include "utils.h"
 
-# include "../cyber3d.h"
-
-typedef struct s_cub t_cub;
-
-int	parcer(t_cub *cub);
-
-#endif
+int error(void)
+{
+	write(1, "Error\n", 6);
+	return (1);
+}

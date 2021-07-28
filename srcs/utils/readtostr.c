@@ -10,19 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parcer.h                                 cclarice@student.21-school.ru   */
+/*   readtostr.c                              cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 20:42:05  /  2021/07/28 20:53:09 @cclarice   */
+/*   Created/Updated: 2021/07/28 20:10:10  /  2021/07/28 20:19:53 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARCER_H
-# define PARCER_H
+#include "utils.h"
 
-# include "../cyber3d.h"
+int		get_len(const char *filepath)
+{
+	int		ret;
+	int		fd;
+	char	buffer;
 
-typedef struct s_cub t_cub;
+	fd = open(filepath, O_RDONLY);
+	if (fd == -1)
+		return (fd);
+	ret = 0;
+	while (read(fd, &buffer, 1) == 1)
+		ret++;
+	close(fd);
+	return (ret);
+}
 
-int	parcer(t_cub *cub);
+char	*readtostr(const char *filepath)
+{
+	char		*ret;
+	const int	len = get_len(filepath);
+	int			fd;
 
-#endif
+	if (len == -1 || !filepath)
+		return (NULL);
+	fd = open(filepath, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	ret = (char *)malloc(sizeof(char) * len + 1);
+	ret[len] = '\0';
+	if (read(fd, ret, len) == -1)
+	{
+		free(ret);
+		return (NULL);
+	}
+	return (ret);
+}

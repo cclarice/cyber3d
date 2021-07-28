@@ -10,19 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parcer.h                                 cclarice@student.21-school.ru   */
+/*   parce_map.c                              cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 20:42:05  /  2021/07/28 20:53:09 @cclarice   */
+/*   Created/Updated: 2021/07/28 21:20:41  /  2021/07/28 21:21:12 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARCER_H
-# define PARCER_H
+#include "parcer.h"
 
-# include "../cyber3d.h"
+int	ismap(char c)
+{
+	const char	mappart[] = " 01NEWS\0";
+	int			ptr;
 
-typedef struct s_cub t_cub;
+	ptr = 0;
+	while (mappart[ptr])
+		if (mappart[ptr++] == c)
+			return (TRUE);
+	return (FALSE);
+}
 
-int	parcer(t_cub *cub);
+int	parce_map(t_cub *cub)
+{
 
-#endif
+}

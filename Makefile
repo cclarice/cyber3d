@@ -12,7 +12,7 @@
 #                                                                              #
 #    Makefile                                 cclarice@student.21-school.ru    #
 #                                                                              #
-#    Created/Updated: 2021/07/27 04:51:41  /  2021/07/27 14:19:36 @cclarice    #
+#    Created/Updated: 2021/07/28 21:08:00  /  2021/07/28 21:19:36 @cclarice    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ HEAD	= srcs/cyber3d.h\
 # Sources
 SRCF	= srcs
 ENGINE	= engine.c
-PARCER	= parcer.c
-UTILS	= strtouint.c
+PARCER	= parcer.c parce_arg.c parce_map.c
+UTILS	= strtouint.c error.c readtostr.c ft_strlen.c
 SRC		= $(addprefix parcer/, $(PARCER))\
 		  $(addprefix engine/, $(ENGINE))\
 		  $(addprefix utils/, $(UTILS))\
@@ -38,10 +38,11 @@ SRCS	= $(addprefix $(SRCF)/, $(SRC))
 
 # Objects
 OBJF	= objs
+IFOBJF	= $(shell ls | grep $(OBJF))
 OBJFS	= $(addprefix $(OBJF)/, parcer engine utils)
-OBJS	= $(patsubst src/%.c, obj/%.o, $(SRCS))
+OBJS	= $(patsubst srcs/%.c, objs/%.o, $(SRCS))
 
-# Bonus #
+# Bonus
 
 # Make Settings
 SYSTEM	= $(shell uname)
@@ -73,11 +74,42 @@ MAGENTA	= \\e[35m
 CYAN	= \\e[36m
 WHITE	= \\e[37m
 
-all:
-	@$(ECHO) $(GREEN)Checking if custom header is needed$(RESET)
+# Rules
+all: $(OBJF) $(NAME)
+	
+
+$(OBJF):
+	@if [ ! -a "$(OBJF)" ]; then \
+		$(MKDIR) $(OBJF); \
+		$(MKDIR) $(OBJFS); \
+		$(ECHO) "Created $(CURCIVE)$(GREEN)$(OBJF) $(OBJFS)$(RESET) folders."; \
+	fi
+
+objs/%.o: srcs/%.c $(HEAD)
+	@$(CC) $(FLAG) -c $< -o $@
+	@$(ECHO) \
+	"Compiled $(CYAN)$<$(RESET) $(WHITE)$(BOLT)->$(RESET) $(GREEN)$@$(RESET)"
+
+$(NAME): $(OBJS)
+	@$(CC) $(FLAG) $(OBJS) -o $(NAME)
+	@$(ECHO) "Compiled $(BOLT)$(GREEN)$(NAME)$(RESET)"
+
 bonus:
-	@$(ECHO) $(RED)Empty$(RESET)
+	@$(ECHO) "$(RED)Empty$(RESET)"
+
 clean:
-fclean:
-re:
-norm: 
+	@if [ -a $(OBJF) ]; then \
+		$(REMOVE) $(OBJF); \
+		$(ECHO) "Removed $(BOLT)$(RED)$(OBJF)$(RESET) folder."; \
+	fi
+
+fclean: clean
+	@if [ -a $(NAME) ]; then \
+		$(REMOVE) $(NAME); \
+		$(ECHO) "Removed $(BOLT)$(RED)$(NAME)$(RESET) executable."; \
+	fi
+
+re: fclean all
+
+norm:
+	norminette $(SRCS)
