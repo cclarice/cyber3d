@@ -12,7 +12,7 @@
 #                                                                              #
 #    Makefile                                 cclarice@student.21-school.ru    #
 #                                                                              #
-#    Created/Updated: 2021/07/28 22:02:34  /  2021/07/29 00:16:25 @cclarice    #
+#    Created/Updated: 2021/07/29 00:16:26  /  2021/08/01 15:05:44 @cclarice    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ HEAD	= srcs/cyber3d.h\
 # Sources
 SRCF	= srcs
 ENGINE	= engine.c
-PARCER	= parcer.c parce_arg.c parce_map.c
+PARCER	= parcer.c parce_arg.c parce_map.c parce_map_valid.c
 UTILS	= strtouint.c error.c readtostr.c ft_strlen.c ft_atoi.c
 SRC		= $(addprefix parcer/, $(PARCER))\
 		  $(addprefix engine/, $(ENGINE))\

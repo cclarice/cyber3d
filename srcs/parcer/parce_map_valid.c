@@ -10,89 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parce_map.c                              cclarice@student.21-school.ru   */
+/*   parce_map_valid.c                        cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/08/01 15:03:59  /  2021/08/01 15:04:22 @cclarice   */
+/*   Created/Updated: 2021/08/01 15:10:47  /  2021/08/01 15:13:16 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parcer.h"
 
-int	get_map_sizes(char *str, uint *x, uint *y)
+int	parce_map_walls()
 {
-	uint cx;
+	int	xx;
+	int	yy;
 
-	while (*str)
+	yy = -1;
+	while (++yy < x)
 	{
-		cx = 0;
-		while (*str != '\n')
+		while (++xx < y)
 		{
-			str++;
-			cx++;
+			
 		}
-		if (cx > *x)
-			*x = cx;
-		*y = *y + 1;
-		str++;
 	}
 	return (OK);
 }
 
-char	**alloc_map(uint x, uint y)
+int	parce_map_player()
 {
-	char	**map;
-	uint	tmp;
+	int	xx;
+	int	yy;
 
-	map = (char **)malloc(sizeof(char *) * y);
-	if (!map)
-		return (NULL);
-	*map = (char *)malloc(sizeof(char *) * y * x);
-	if (!*map)
-		return (NULL);
-	tmp = 1;
-	while (tmp < y)
-		map[tmp] = *map + x * tmp++;
-	tmp = 0;
-	while (tmp < y * x)
-		map[0][tmp++] = ' ';
-	return (map);
-}
-
-void	writetomap(char **map, char *str, uint x, uint y)
-{
-	char	*ptr;
-	uint	i;
-	uint	d;
-
-	ptr = *map;
-	d = 0;
-	while (d < y)
+	yy = -1;
+	while (++yy < x)
 	{
-		i = 0;
-		while (i < x)
+		while (++xx < y)
 		{
-			if (*str != '\n')
-			{
-				*ptr = *str;
-				*str++;
-			}
-			i++;
-			*ptr++;
+			
 		}
-		d++;
-		if (*str != '\0')
-			str++;
 	}
+	return (OK);
 }
 
-int	parce_map(t_cub *cub)
+int	parce_map_valid()
 {
-	get_map_sizes(cub->ptr, &cub->map_x, &cub->map_y);
-	cub->map = alloc_map(cub->map_x, cub->map_y);
-	if (!cub->map)
+	if (parce_map_walls())
 		return (ERROR);
-	writetomap(cub->map, cub->ptr, cub->map_x, cub->map_y);
-	//if (is_not_valid_map(cub, cub->map, cub->map_x, cub->map_y))
-	//	return (ERROR);
-	return (OK);
+	if (parce_map_player())
+		return (ERROR);
 }
