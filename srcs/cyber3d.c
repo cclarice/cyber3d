@@ -12,7 +12,7 @@
 /*                                                                            */
 /*   cyber3d.c                                cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 21:05:13  /  2021/07/28 21:05:14 @cclarice   */
+/*   Created/Updated: 2021/07/29 02:44:39  /  2021/07/29 03:12:00 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,17 @@
 
 int	freecub(t_cub *cub)
 {
+	uint	temp;
+
+	temp = 0;
 	if (cub->cub)
 		free(cub->cub);
 	if (cub->map)
+	{
+		if (*cub->map)
+			free(*cub->map);
 		free(cub->map);
+	}
 	return (TRUE);
 }
 
@@ -39,6 +46,9 @@ int	nullcub(t_cub *cub)
 	cub->path_e = NULL;
 	cub->colorf = 0xff000000;
 	cub->colorc = 0xff000000;
+	cub->pla = -1;
+	cub->plx = -1;
+	cub->ply = -1;
 	return (OK);
 }
 

@@ -12,7 +12,7 @@
 /*                                                                            */
 /*   utils.h                                  cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 20:38:55  /  2021/07/28 20:42:42 @cclarice   */
+/*   Created/Updated: 2021/07/28 20:42:42  /  2021/07/28 22:02:08 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 int		error(void);
 int		ft_strlen(const char *str);
 char	*readtostr(const char *filepath);
+int		ft_atoi(const char *str);
 
 #endif

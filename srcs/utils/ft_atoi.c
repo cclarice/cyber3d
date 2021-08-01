@@ -10,22 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   parcer.h                                 cclarice@student.21-school.ru   */
+/*   ft_atoi.c                                cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 23:54:33  /  2021/07/29 02:32:48 @cclarice   */
+/*   Created/Updated: 2021/07/28 22:02:27  /  2021/07/28 22:11:50 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARCER_H
-# define PARCER_H
+#include "utils.h"
 
-# include "../cyber3d.h"
+int	ft_atoi(const char *str)
+{
+	const char	sgn = 1 - (*str == '-') * 2;
+	int			ret;
 
-typedef struct s_cub t_cub;
-
-int	parcer(t_cub *cub);
-int	parce_arg(t_cub *cub);
-int	parce_map(t_cub *cub);
-int	is_map(char c);
-
-#endif
+	ret = 0;
+	str += (*str == '-' || *str == '+');
+	while (*str == '0')
+		str++;
+	while ((*str >= '0' && *str <= '9' && ret <= 214748363)
+		|| (*str >= '0' && *str <= '7' && ret == 214748364))
+	{
+		ret *= 10;
+		ret += *str - '0';
+		str++;
+	}
+	if (*str >= '0' && *str <= '9')
+	{
+		if (sgn == 1)
+			return (2147483647);
+		return (-2147483648);
+	}
+	return (ret * sgn);
+}

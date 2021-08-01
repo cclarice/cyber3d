@@ -12,7 +12,7 @@
 /*                                                                            */
 /*   cyber3d.h                                cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/07/28 21:04:31  /  2021/07/28 21:04:40 @cclarice   */
+/*   Created/Updated: 2021/07/29 02:47:43  /  2021/07/29 02:47:47 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define FALSE 0
 # define ERROR 1
 # define OK 0
+# define P 3.14159265358979
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -37,6 +38,7 @@ typedef unsigned int uint;
 struct  s_cub
 {
 	char	*cub;
+	char	*ptr;
 	char	**map;
 	uint	map_x;
 	uint	map_y;
@@ -46,6 +48,9 @@ struct  s_cub
 	char	*path_e;
 	uint	colorf;
 	uint	colorc;
+	double	plx;
+	double	ply;
+	double	pla;
 };
 
 #endif
